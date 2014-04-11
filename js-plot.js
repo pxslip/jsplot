@@ -418,16 +418,10 @@ var CanvasHandler = {
 	},
 	drawAxes: function () {
 		'use strict';
-		var ctx, y_unit_sep, x_unit_sep, y_px_sep, x_px_sep, y_axis_length, x_axis_length, x_axis_values, y_axis_values, i, unit_value, px_value;
+		var ctx, x_axis_values, y_axis_values, i, unit_value, px_value;
 		ctx = CanvasHandler.context;
 		ctx.fillStyle = '#000000';
 		ctx.strokeStyle = '#000000';
-		y_axis_length = CanvasHandler.yAxisCoords().start[1]-CanvasHandler.yAxisCoords().end[1];
-		y_unit_sep = (PlotData.curr_max_y_coord - PlotData.curr_min_y_coord) / 9;
-		y_px_sep = y_axis_length / 9;
-		x_axis_length = CanvasHandler.xAxisCoords().end[0]-CanvasHandler.xAxisCoords().start[0];
-		x_unit_sep = (PlotData.curr_max_x_coord - PlotData.curr_min_x_coord) / 9;
-		x_px_sep = x_axis_length / 9;
 		ctx.lineWidth = 1.0;
 		ctx.moveTo(CanvasHandler.yAxisCoords().end[0], CanvasHandler.yAxisCoords().end[1]);
 		ctx.lineTo(CanvasHandler.yAxisCoords().start[0], CanvasHandler.yAxisCoords().start[1]);//draw the y-axis
