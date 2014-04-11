@@ -66,9 +66,12 @@ var CanvasHandler = {
 		'x_axis':'x',
 		'y_axis':'y',
 	},
-	init:function(target, commands) {
+	init:function(target, commands, coord_target) {
 		'use strict';
 		CanvasHandler.canvas = document.getElementById(target);
+		if(coord_target) {
+			CanvasHandler.coord_target = document.getElementById(coord_target);
+		}
 		CanvasHandler.canvas.width = CanvasHandler.canvas.parentNode.offsetWidth - 100;
 		CanvasHandler.canvas.height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 100;
 		CanvasHandler.canvas.addEventListener('dblclick', CanvasHandler.dblclickListener);
@@ -166,8 +169,8 @@ var CanvasHandler = {
 			PlotData.curr_max_y_coord = PlotData.curr_max_y_coord + y_diff;
 			PlotData.curr_min_y_coord = PlotData.curr_min_y_coord + y_diff;
 			CanvasHandler.redraw();
-		} else {//no drag is occuring so show the current coords of the cursor
-			document.getElementById('plot_hover_text').textContent = unit_coords[0].toPrecision(6)+', '+unit_coords[1].toPrecision(6);
+		} else if(CanvasHandler.coord_target) {//no drag is occuring so show the current coords of the cursor
+			CanvasHandler.coord_target.textContent = unit_coords[0].toPrecision(6)+', '+unit_coords[1].toPrecision(6);
 		}
 		return false;
 	},
