@@ -28,6 +28,7 @@ var PlotData = {
 	'curr_color':'#000000',
 	'axis_text':'10pt Arial',
 	'is_dragging':false,
+	'last_redraw':undefined,
 	reset: function() {
 		'use strict';
 		PlotData.command_array = undefined;
@@ -56,6 +57,7 @@ var PlotData = {
 		PlotData.prev_max_y_coord = [];
 		PlotData.prev_min_y_coord = [];
 		PlotData.curr_color = '#000000';
+		PlotData.last_redraw = undefined;
 	}
 };
 
@@ -194,6 +196,9 @@ var CanvasHandler = {
 	redraw:function() {
 		'use strict';
 		var cmd_obj, i;
+		if(PlotData.last_redraw && PlotData.last_redraw+100 < Date.now()) {
+			return;
+		}
 		CanvasHandler.context.restore();
 		CanvasHandler.context.save();
 		CanvasHandler.context.clearRect(0, 0, CanvasHandler.width(), CanvasHandler.height());
@@ -207,6 +212,7 @@ var CanvasHandler = {
 				cmd_obj.draw(CanvasHandler.context);
 			}
 		}
+		PlotData.last_redraw = Date.now();
 	},
 	width:function() {
 		'use strict';
