@@ -68,6 +68,9 @@ var CanvasHandler = {
 	},
 	init:function(target, commands, coord_target) {
 		'use strict';
+		if(CanvasHandler.canvas) {
+			CanvasHandler.detach();
+		}
 		CanvasHandler.canvas = document.getElementById(target);
 		if(coord_target) {
 			CanvasHandler.coord_target = document.getElementById(coord_target);
@@ -85,6 +88,15 @@ var CanvasHandler = {
 		PlotData.command_array = commands;//store the array of commands for future reference
 		PlotData.command_obj_array = CanvasHandler.parseLines(commands.split('\n'));
 		CanvasHandler.redraw();
+	},
+	detach: function () {
+		'use strict';
+		CanvasHandler.canvas.removeEventListener('dblclick', CanvasHandler.dblclickListener);
+		CanvasHandler.canvas.removeEventListener('mousedown', CanvasHandler.mousedownListener);
+		CanvasHandler.canvas.removeEventListener('mouseup', CanvasHandler.mouseupListener);
+		CanvasHandler.canvas.removeEventListener('contextmenu', CanvasHandler.contextmenuListener);
+		CanvasHandler.canvas.removeEventListener('mousemove', CanvasHandler.mousemoveListener);
+		PlotData.reset();
 	},
 	dblclickListener:function(evt) {
 		'use strict';
