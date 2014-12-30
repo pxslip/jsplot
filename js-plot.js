@@ -196,7 +196,7 @@ var CanvasHandler = {
 	redraw:function() {
 		'use strict';
 		var cmd_obj, i;
-		if(PlotData.last_redraw && PlotData.last_redraw+100 < Date.now()) {
+		if(PlotData.last_redraw && (PlotData.last_redraw+100) < Date.now()) {
 			return;
 		}
 		CanvasHandler.context.restore();
