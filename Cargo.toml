@@ -1,0 +1,21 @@
+[package]
+name = "jsplot"
+version = "3.0.0-alpha.0"
+authors = ["Will K (pxslip) <dev@pxslip.com>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+js-sys = "0.3.58"
+wasm-bindgen = "0.2.81"
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'CanvasRenderingContext2d',
+  'Document',
+  'Element',
+  'HtmlCanvasElement',
+  'Window',
+]

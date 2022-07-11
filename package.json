@@ -1,6 +1,6 @@
 {
   "name": "jsplot",
-  "version": "2.0.0-dev",
+  "version": "2.0.0-alpha.0",
   "description": "A JS version of the venerable XPlot library",
   "main": "app.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/pxslip/jsplot.git"
+    "url": "git+ssh://git@github.com/pxslip/jsplot.git"
   },
   "keywords": [
     "xplot",
@@ -21,6 +21,7 @@
   "homepage": "https://bitbucket.org/pxslip/jsplot#readme",
   "devDependencies": {
     "eslint": "^5.5.0",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "typescript": "4.7.4"
   }
 }
