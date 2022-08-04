@@ -7,8 +7,9 @@
 		// Update 'VARIANT' to pick a Node version: 18, 16, 14.
 		// Append -bullseye or -buster to pin to an OS version.
 		// Use -bullseye variants on local on arm64/Apple Silicon.
-		"args": { 
-			"VARIANT": "16-bullseye"
+		"args": {
+			"VARIANT": "bullseye",
+			"NODE_VERSION": "18"
 		}
 	},
 
@@ -16,6 +17,14 @@
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
+			"settings": {
+				"lldb.executable": "/usr/bin/lldb",
+				// VS Code don't watch files under ./target
+				"files.watcherExclude": {
+					"**/target/**": true
+				},
+				"rust-analyzer.checkOnSave.command": "clippy"
+			},
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"dbaeumer.vscode-eslint",
@@ -27,7 +36,8 @@
 				"GitHub.vscode-pull-request-github",
 				"esbenp.prettier-vscode",
 				"mutantdino.resourcemonitor",
-				"rust-lang.rust-analyzer"
+				"rust-lang.rust-analyzer",
+				"tamasfe.even-better-toml"
 			]
 		}
 	},
@@ -39,8 +49,9 @@
 	// "postCreateCommand": "yarn install",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "node",
+	"remoteUser": "vscode",
 	"features": {
-		"git": "latest"
+		"git": "latest",
+		"desktop-lite": "latest"
 	}
 }
