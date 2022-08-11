@@ -1,0 +1,40 @@
+[package]
+name = "jsplot"
+version = "3.0.0-alpha.0"
+authors = ["Will K (pxslip) <dev@pxslip.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+
+[dependencies]
+js-sys = "0.3.58"
+strum = "0.24"
+strum_macros = "0.24"
+wasm-bindgen = "0.2.81"
+wasm-bindgen-futures = "0.4.31"
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'console',
+  'Blob',
+  'CanvasRenderingContext2d',
+  'Document',
+  'DomTokenList',
+  'Element',
+  'Event',
+  'File',
+  'FileList',
+  'HtmlCanvasElement',
+  'HtmlElement',
+  'HtmlInputElement',
+  'Node',
+  'MouseEvent',
+  'ReadableStream',
+  'ReadableStreamDefaultReader',
+  'TextDecoder',
+  'TextDecoderOptions',
+  'Window',
+]
