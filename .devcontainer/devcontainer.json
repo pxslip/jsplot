@@ -12,6 +12,10 @@
 			"NODE_VERSION": "18"
 		}
 	},
+	"runArgs": [
+		"--label traefik.http.routers.jsplot.rule=Host(`jsplot.traefik.localhost`, `jsplot.docker.localhost`)",
+		"--label traefik.http.services.jsplot.loadbalancer.server.port=8080"
+	],
 
 	// Configure tool-specific properties.
 	"customizations": {

@@ -5,9 +5,22 @@ const DISABLED_COMMANDS = ['new_plotter', 'aspect_ratio'];
 export class JSPlot {
 	private fileInput;
 	private plotter: Plotter;
+	private canvasWrapper;
 	private canvas;
-	constructor(fileInput: HTMLInputElement, canvas: HTMLCanvasElement) {
-		this.canvas = canvas;
+	private titleElem;
+	private xAxisCanvas;
+	private yAxisCanvas;
+	constructor(fileInput: HTMLInputElement, canvasWrapper: HTMLElement, { titleTag = 'span' }: JSPlotOptions = {}) {
+		this.canvasWrapper = canvasWrapper;
+		this.titleElem = document.createElement(titleTag);
+		this.canvasWrapper.append(this.titleElem);
+		this.canvas = document.createElement('canvas');
+		this.canvas.id = 'jsplot_graph_canvas';
+		this.canvasWrapper.append(this.canvas);
+		this.xAxisCanvas = document.createElement('canvas');
+		this.canvasWrapper.append(this.xAxisCanvas);
+		this.yAxisCanvas = document.createElement('canvas');
+		this.canvasWrapper.append(this.yAxisCanvas);
 		this.fileInput = fileInput;
 		this.fileInput.addEventListener('input', () => {
 			this.#fileSelectedHandler();
@@ -32,6 +45,7 @@ export class JSPlot {
 				const xUnit = units.shift();
 				const yUnit = units.shift();
 				this.plotter = new Plotter(this.canvas, xUnit, yUnit);
+				first = false;
 			}
 			// confirm we haven't somehow bypassed getting units and creating the plotter
 			if (this.plotter) {
