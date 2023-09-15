@@ -15,11 +15,12 @@
   <section><input type="file" id="file"></section>
   <script>
     const reader = new FileReader();
+    reader.addEventListener('load', (evt) => {
+      window.CanvasHandler.init('canvas', evt.target.result);
+    });
     document.getElementById('file').addEventListener('change', () => {
       const file = event.currentTarget.files[0];
-      reader.addEventListener('load', (evt) => {
-        window.CanvasHandler.init('canvas', evt.target.result);
-      });
+      reader.readAsText(file);
     });
   </script>
 </body>
