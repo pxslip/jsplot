@@ -15,7 +15,7 @@
   <section><input type="file" id="file"></section>
   <script>
     const reader = new FileReader();
-    document.getElementById('file').addEventListener('change', () => {
+    document.getElementById('file').addEventListener('select change', () => {
       const file = event.currentTarget.files[0];
       reader.addEventListener('load', (evt) => {
         window.CanvasHandler.init('canvas', evt.target.result);
