@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>JSPlot Demo</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src='js-plot.js'></script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    const commands = await fetch('./demo.txt');
+    window.CanvasHandler.init('#canvas', commands);
+  </script>
+</body>
+</html>
