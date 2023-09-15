@@ -11,7 +11,7 @@
   <canvas id="canvas"></canvas>
   <script>
     (async () => {
-      const commands = await fetch('./demo.txt');
+      const commands = await (await fetch('./demo.txt')).text();
       window.CanvasHandler.init('canvas', commands);
     })();
   </script>
