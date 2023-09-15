@@ -10,8 +10,10 @@
 <body>
   <canvas id="canvas"></canvas>
   <script>
-    const commands = await fetch('./demo.txt');
-    window.CanvasHandler.init('#canvas', commands);
+    (async () => {
+      const commands = await fetch('./demo.txt');
+      window.CanvasHandler.init('#canvas', commands);
+    })();
   </script>
 </body>
 </html>
