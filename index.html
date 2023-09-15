@@ -12,11 +12,15 @@
 </head>
 <body>
   <canvas id="canvas"></canvas>
+  <section><input type="file" id="file"></section>
   <script>
-    (async () => {
-      const commands = await (await fetch('./demo.txt')).text();
-      window.CanvasHandler.init('canvas', commands);
-    })();
+    const reader = new FileReader();
+    document.getElementById('file').addEventListener('change', () => {
+      const file = event.currentTarget.files[0];
+      reader.addEventListener('load', (evt) => {
+        window.CanvasHandler.init('canvas', evt.target.result);
+      });
+    });
   </script>
 </body>
 </html>
